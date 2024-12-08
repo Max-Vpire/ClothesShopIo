@@ -5,24 +5,29 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
 
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "category")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-    @Column(nullable = false, unique = true)
+
+    @Column(unique = true, nullable = false)
     private String name;
 
-    @Column
-    @CreatedDate
+    @Column(nullable = false)
+    private String description;
+
+    @Column(nullable = false)
     private LocalDate createdAt;
+
+    @Column(nullable = false)
+    private LocalDate updatedAt;
 }
